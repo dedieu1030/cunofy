@@ -22,7 +22,7 @@ export function ProductCard({ product }: ProductCardProps) {
                 </div>
 
                 {/* Title */}
-                <h2 className="text-base font-medium text-foreground group-hover:underline line-clamp-2">
+                <h2 className="text-lg font-semibold text-foreground group-hover:underline line-clamp-2">
                     {product.name}
                 </h2>
             </Link>
