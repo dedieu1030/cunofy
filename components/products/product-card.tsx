@@ -13,8 +13,8 @@ export function ProductCard({ product }: ProductCardProps) {
     return (
         <Card className="group relative overflow-hidden border-border/50 transition-all hover:shadow-lg rounded-card">
             <Link href={`/product/${product.slug}`} className="block">
-                {/* Screenshot Preview - Adjusted to 3:4 for shorter cards */}
-                <div className="relative aspect-[3/4] overflow-hidden rounded-t-card bg-secondary">
+                {/* Screenshot Preview - 3:2 aspect ratio matching card.html */}
+                <div className="relative aspect-[3/2] overflow-hidden rounded-t-card bg-secondary">
                     <div className="absolute inset-0 flex items-center justify-center">
                         <Image
                             src={product.imageUrl}
