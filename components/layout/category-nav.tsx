@@ -25,7 +25,7 @@ export function CategoryNav() {
 
     return (
         <section className="border-b">
-            <div className="container px-6">
+            <div className="container mx-auto">
                 <div className="hide-scrollbar flex gap-2 overflow-x-auto py-4">
                     {categories.map((category) => {
                         const href = category.slug ? `/category/${category.slug}` : "/";

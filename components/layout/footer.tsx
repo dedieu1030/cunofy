@@ -26,7 +26,7 @@ export function Footer() {
 
     return (
         <footer className="bg-foreground text-background">
-            <div className="container px-6 py-16">
+            <div className="container mx-auto py-16">
                 <div className="grid gap-12 lg:grid-cols-[1fr_2fr]">
                     {/* Left: Branding */}
                     <div className="rounded-card bg-background/10 p-8">

@@ -7,7 +7,7 @@ export default function HomePage() {
         <main className="min-h-screen">
             {/* Hero Section - Dark background like Framer */}
             <section className="bg-foreground text-background py-16">
-                <div className="container px-6 text-center">
+                <div className="container mx-auto text-center">
                     {/* "This week" badge with Framer styling */}
                     <div className="inline-flex items-center gap-2 rounded-full bg-background/10 px-4 py-2 text-sm mb-6">
                         <span className="font-medium text-background">This week</span>'s update
@@ -25,7 +25,7 @@ export default function HomePage() {
 
             {/* Products Grid */}
             <section className="py-12">
-                <div className="container px-6">
+                <div className="container mx-auto">
                     <div className="flex items-center justify-between mb-8">
                         <div>
                             <h2 className="text-3xl font-bold">All</h2>
