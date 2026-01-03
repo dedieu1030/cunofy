@@ -10,7 +10,6 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                // Design tokens from HTML reference
                 background: "hsl(var(--background))",
                 foreground: "hsl(var(--foreground))",
                 card: {
@@ -56,6 +55,8 @@ const config: Config = {
                 lg: "var(--radius)",
                 md: "calc(var(--radius) - 2px)",
                 sm: "calc(var(--radius) - 4px)",
+                full: "100px", // Framer pills
+                card: "24px",   // Framer cards
             },
             fontFamily: {
                 sans: ["var(--font-inter)", "Inter", "sans-serif"],

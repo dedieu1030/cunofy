@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Card } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import type { Product } from "@/lib/mock-data";
 import { ExternalLink } from "lucide-react";
@@ -11,10 +11,10 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
     return (
-        <Card className="group relative overflow-hidden border-border/10 transition-all hover:shadow-lg">
+        <Card className="group relative overflow-hidden border-border/50 transition-all hover:shadow-lg rounded-card">
             <Link href={`/product/${product.slug}`} className="block">
                 {/* Screenshot Preview */}
-                <div className="relative aspect-[9/16] overflow-hidden rounded-t-3xl bg-muted">
+                <div className="relative aspect-[9/16] overflow-hidden rounded-t-card bg-secondary">
                     <div className="absolute inset-0 flex items-center justify-center">
                         <Image
                             src={product.imageUrl}
@@ -25,20 +25,19 @@ export function ProductCard({ product }: ProductCardProps) {
                         />
                     </div>
                     {/* Gradient Overlay */}
-                    <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-muted to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-secondary to-transparent" />
 
-                    {/* Score Badge - NEW FEATURE */}
+                    {/* Score Badge - Framer style with rounded-full */}
                     <div className="absolute top-4 right-4">
-                        <Badge className="bg-foreground text-background font-semibold">
+                        <Badge className="bg-foreground text-background font-semibold rounded-full px-3 py-1">
                             {product.score.final}/100
                         </Badge>
                     </div>
                 </div>
 
-                {/* Product Info */}
-                <div className="p-6">
+                <CardContent className="p-6">
                     <div className="flex items-start gap-4">
-                        {/* App Icon */}
+                        {/* App Icon - 12px radius like Framer */}
                         <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-xl">
                             <Image
                                 src={product.iconUrl}
@@ -73,7 +72,7 @@ export function ProductCard({ product }: ProductCardProps) {
                             <span>View details</span>
                         </div>
                     </div>
-                </div>
+                </CardContent>
             </Link>
         </Card>
     );

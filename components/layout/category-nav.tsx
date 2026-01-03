@@ -24,8 +24,8 @@ export function CategoryNav() {
     const pathname = usePathname();
 
     return (
-        <section className="border-b border-border/10">
-            <div className="container mx-auto px-6">
+        <section className="border-b">
+            <div className="container px-6">
                 <div className="hide-scrollbar flex gap-2 overflow-x-auto py-4">
                     {categories.map((category) => {
                         const href = category.slug ? `/category/${category.slug}` : "/";
@@ -41,7 +41,7 @@ export function CategoryNav() {
                                     "whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-colors",
                                     isActive
                                         ? "bg-secondary text-foreground"
-                                        : "text-muted-foreground hover:bg-secondary/50"
+                                        : "text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
                                 )}
                             >
                                 {category.name}

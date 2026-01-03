@@ -5,11 +5,11 @@ import { Input } from "@/components/ui/input";
 
 export function Header() {
     return (
-        <header className="sticky top-0 z-50 w-full border-b border-border/10 bg-background">
-            <nav className="container mx-auto flex h-16 items-center justify-between px-6">
+        <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+            <nav className="container flex h-16 items-center justify-between px-6">
                 {/* Left: Logo + Navigation */}
                 <div className="flex items-center gap-8">
-                    {/* Logo */}
+                    {/* Logo - Black square matching Framer */}
                     <Link href="/" className="flex items-center gap-2">
                         <div className="h-8 w-8 rounded-lg bg-foreground" />
                     </Link>
@@ -41,9 +41,9 @@ export function Header() {
                         <Input
                             type="search"
                             placeholder="Search apps"
-                            className="w-full rounded-full bg-muted pl-10 pr-16"
+                            className="w-full rounded-full bg-secondary pl-10 pr-16 border-0"
                         />
-                        <kbd className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded bg-muted-foreground/10 px-1.5 font-mono text-[10px] font-medium text-muted-foreground">
+                        <kbd className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
                             S
                         </kbd>
                     </div>

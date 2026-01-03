@@ -26,10 +26,10 @@ export function Footer() {
 
     return (
         <footer className="bg-foreground text-background">
-            <div className="container mx-auto px-6 py-16">
+            <div className="container px-6 py-16">
                 <div className="grid gap-12 lg:grid-cols-[1fr_2fr]">
                     {/* Left: Branding */}
-                    <div className="rounded-3xl bg-background/10 p-8">
+                    <div className="rounded-card bg-background/10 p-8">
                         <div className="flex items-start gap-4">
                             <div className="h-12 w-12 rounded-lg bg-background" />
                             <div>
@@ -55,7 +55,7 @@ export function Footer() {
                                     <li key={category}>
                                         <Link
                                             href={`/category/${category.toLowerCase().replace(/\s+/g, "-")}`}
-                                            className="text-sm text-foreground hover:text-background transition-colors"
+                                            className="text-sm text-background hover:text-background/80 transition-colors"
                                         >
                                             {category}
                                         </Link>
