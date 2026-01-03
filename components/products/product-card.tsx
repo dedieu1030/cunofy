@@ -10,14 +10,14 @@ export function ProductCard({ product }: ProductCardProps) {
     return (
         <article className="group">
             <Link href={`/product/${product.slug}`} className="block">
-                {/* Image - 3:2 ratio like Wirecutter */}
-                <div className="relative w-full overflow-hidden rounded-card bg-secondary mb-4">
+                {/* Image - 3:2 ratio like Wirecutter, forced horizontal */}
+                <div className="relative w-full aspect-[3/2] overflow-hidden rounded-card bg-secondary mb-4">
                     <Image
                         src={product.imageUrl}
                         alt={product.name}
-                        width={345}
-                        height={230}
-                        className="w-full h-auto object-cover transition-transform group-hover:scale-105"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover transition-transform group-hover:scale-105"
                     />
                 </div>
 
