@@ -1,13 +1,12 @@
+```typescript
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { mockProducts } from "@/lib/mock-data";
-import { ScoreBreakdown } from "@/components/products/score-breakdown";
 import { RelatedProducts } from "@/components/products/related-products";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { generateInsights, getRecommendationLevel } from "@/lib/scoring";
 import { ExternalLink, ArrowLeft } from "lucide-react";
 
 interface ProductPageProps {
@@ -28,9 +27,6 @@ export default function ProductPage({ params }: ProductPageProps) {
     if (!product) {
         notFound();
     }
-
-    const insights = generateInsights(product);
-    const recommendation = getRecommendationLevel(product.score.final);
 
     return (
         <main className="min-h-screen">
@@ -72,41 +68,13 @@ export default function ProductPage({ params }: ProductPageProps) {
 
                             {/* Title */}
                             <div>
-                                <h1 className="text-4xl font-bold mb-2">{product.name}</h1>
-                                <p className="text-lg text-muted-foreground">
+                                <h1 className="text-4xl font-bold mb-4">{product.name}</h1>
+                                <p className="text-lg text-muted-foreground leading-relaxed">
                                     {product.description}
                                 </p>
                             </div>
 
-                            {/* Score Badge */}
-                            <div className="flex items-center gap-4">
-                                <div className="flex items-center gap-3">
-                                    <Badge className="bg-foreground text-background rounded-full text-2xl px-6 py-3">
-                                        {product.score.final}/100
-                                    </Badge>
-                                    <div>
-                                        <div className={`inline-flex items-center rounded-full px-3 py-1 text-sm font-medium ${recommendation.color}`}>
-                                            {recommendation.label}
-                                        </div>
-                                        <p className="text-xs text-muted-foreground mt-1">
-                                            {recommendation.description}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Insights */}
-                            {insights.length > 0 && (
-                                <div className="space-y-2">
-                                    {insights.map((insight, index) => (
-                                        <div key={index} className="flex items-center gap-2 text-sm">
-                                            <span>{insight}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
-
-                            {/* CTA */}
+                            {/* CTA Buttons */}
                             <div className="flex gap-3">
                                 <Button size="lg" className="rounded-full">
                                     <ExternalLink className="h-4 w-4 mr-2" />
@@ -121,39 +89,75 @@ export default function ProductPage({ params }: ProductPageProps) {
                 </div>
             </section>
 
-            {/* Content Sections */}
+            {/* Product Details */}
             <section className="py-12">
                 <div className="container mx-auto space-y-12">
-                    {/* Score Breakdown */}
-                    <ScoreBreakdown product={product} />
-
-                    {/* Product Details */}
                     <Card className="rounded-card">
                         <CardContent className="p-8">
-                            <h2 className="text-2xl font-bold mb-4">About {product.name}</h2>
+                            <h2 className="text-2xl font-bold mb-6">About {product.name}</h2>
                             <div className="prose prose-stone max-w-none">
-                                <p className="text-muted-foreground leading-relaxed">
+                                <p className="text-muted-foreground leading-relaxed text-lg mb-8">
                                     {product.description}
                                 </p>
+                                
+                                {/* Product Details Grid */}
+                                <div className="grid gap-8 sm:grid-cols-2">
+                                  <div>
+                                    <h3 className="font-semibold text-lg mb-4">Key Features</h3>
+                                    <ul className="space-y-2 text-muted-foreground">
+                                      <li className="flex items-start gap-2">
+                                        <span className="text-foreground">•</span>
+                                        <span>Intuitive and easy-to-use interface</span>
+                                      </li>
+                                      <li className="flex items-start gap-2">
+                                        <span className="text-foreground">•</span>
+                                        <span>Powerful features for productivity</span>
+                                      </li>
+                                      <li className="flex items-start gap-2">
+                                        <span className="text-foreground">•</span>
+                                        <span>Seamless integration with your workflow</span>
+                                      </li>
+                                      <li className="flex items-start gap-2">
+                                        <span className="text-foreground">•</span>
+                                        <span>Regular updates and improvements</span>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  <div>
+                                    <h3 className="font-semibold text-lg mb-4">Perfect For</h3>
+                                    <ul className="space-y-2 text-muted-foreground">
+                                      <li className="flex items-start gap-2">
+                                        <span className="text-foreground">•</span>
+                                        <span>Professionals looking to boost productivity</span>
+                                      </li>
+                                      <li className="flex items-start gap-2">
+                                        <span className="text-foreground">•</span>
+                                        <span>Teams collaborating on projects</span>
+                                      </li>
+                                      <li className="flex items-start gap-2">
+                                        <span className="text-foreground">•</span>
+                                        <span>Anyone seeking better organization</span>
+                                      </li>
+                                      <li className="flex items-start gap-2">
+                                        <span className="text-foreground">•</span>
+                                        <span>Users who value quality and reliability</span>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
 
-                                {/* Placeholder for more details */}
-                                <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                                    <div>
-                                        <h3 className="font-semibold mb-2">Key Features</h3>
-                                        <ul className="space-y-1 text-sm text-muted-foreground">
-                                            <li>• Feature 1</li>
-                                            <li>• Feature 2</li>
-                                            <li>• Feature 3</li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <h3 className="font-semibold mb-2">Best For</h3>
-                                        <ul className="space-y-1 text-sm text-muted-foreground">
-                                            <li>• Use case 1</li>
-                                            <li>• Use case 2</li>
-                                            <li>• Use case 3</li>
-                                        </ul>
-                                    </div>
+                                {/* CTA Section */}
+                                <div className="mt-10 p-6 bg-secondary/50 rounded-card">
+                                  <h3 className="font-semibold text-lg mb-3">Ready to get started?</h3>
+                                  <p className="text-muted-foreground mb-4">
+                                    Discover why thousands of users trust {product.name} for their daily needs.
+                                  </p>
+                                  <div className="flex gap-3">
+                                    <Button size="lg" className="rounded-full">
+                                      <ExternalLink className="h-4 w-4 mr-2" />
+                                      Visit Official Website
+                                    </Button>
+                                  </div>
                                 </div>
                             </div>
                         </CardContent>
@@ -166,3 +170,4 @@ export default function ProductPage({ params }: ProductPageProps) {
         </main>
     );
 }
+```

@@ -26,13 +26,6 @@ export function ProductCard({ product }: ProductCardProps) {
                     </div>
                     {/* Gradient Overlay */}
                     <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-secondary to-transparent" />
-
-                    {/* Score Badge - Framer style with rounded-full */}
-                    <div className="absolute top-3 right-3">
-                        <Badge className="bg-foreground text-background font-semibold rounded-full px-3 py-1">
-                            {product.score.final}/100
-                        </Badge>
-                    </div>
                 </div>
 
                 <CardContent className="p-4">
